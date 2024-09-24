@@ -1,4 +1,4 @@
-<x-forms::field-wrapper
+<x-filament::input.wrapper
     :id="$getId()"
     :label="$getLabel()"
     :label-sr-only="$isLabelHidden()"
@@ -70,7 +70,14 @@
         <span x-text="label()" class="font-bold text-sm"></span>
         <div id="{{ $getId() }}" style="height: {{$getMapHeight()}}px; z-index: 0;" class="w-full rounded-lg shadow-sm" wire:ignore></div>
 
+        @push('styles')
+            <link rel="stylesheet" href="{{ asset('filament/assets/css/geosearch.css') }}">
+            <link rel="stylesheet" href="{{ asset('filament/assets/css/leaflet.css') }}">
+        @endpush
+
         @push('scripts')
+            <script src="{{ asset('filament/assets/js/leaflet.js') }}"></script>
+            <script src="{{ asset('filament/assets/js/geosearch.umd.js') }}"></script>
             @if($isViewRecord())
                 <style>
                     .leaflet-control-geosearch {
@@ -80,4 +87,4 @@
             @endif
         @endpush
     </div>
-</x-forms::field-wrapper>
+</x-filament::input.wrapper>
